@@ -1,0 +1,41 @@
+<div class="image-wrapper left">
+  <img class="sign-in-background" src="/images/sample-image.jpg">
+</div>
+<div class="form-wrapper right">
+  <div class="form-box">
+    <h2 class="sign-up-title">ログイン</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field email">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: false, autocomplete: "email" %>
+        <div class="underline"></div>
+      </div>
+
+      <div class="field password">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+        <div class="underline"></div>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field password">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+          <div class="underline"></div>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "log-in-style box-shadow" %>
+      </div>
+        <p class="sns-button twitter box-shadow"><i class="fab fa-twitter"></i>twitterアカウントでログイン</p>
+        <p class="sns-button facebook box-shadow"><i class="fab fa-facebook-f"></i>facebookアカウントでログイン</p>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+  
+</div>
+
+

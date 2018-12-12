@@ -1,0 +1,33 @@
+<main>
+	<div class="event-form-wrapper">
+		<form class="ui large form event-form-box">
+			<div class="field">
+				<div class="form-label">タイトル</div>
+				<input type="text" name="title" placeholder="丸沼高原に行きまーす！">
+			</div>
+			<div class="field new">
+				<div class="form-label">詳細</div>
+				<textarea></textarea>
+			</div>
+			<div class="field">
+				<div class="form-label">日程</div>
+				<div class="button select-date-style box-shadow" type=""><p>日程を選択</p></div>
+				<span id="date">ここに指定した日程を表示</span>
+			</div>
+			<div class="field">
+				<div class="form-label">エリア</div>
+				<div class="ui selection dropdown">
+					<input type="hidden" name="area">
+					<i class="dropdown icon"></i>
+					<div class="default text">エリアを選択</div>
+					<div class="menu">
+						<div class="item" data-value="0">群馬・長野・新潟</div>
+						<div class="item" data-value="1">秋田・山形・岩手</div>
+					</div>
+				</div>
+			</div>
+			<div class="button event-submit-style box-shadow" type=""><p>投稿</p></div>
+		</form>
+		<div id="calendar"></div>
+	</div>
+</main>

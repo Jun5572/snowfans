@@ -1,0 +1,27 @@
+
+
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+    width: 100%;
+    height: 60px;
+    color: #f7f6f5;
+    background-color:  #333399;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+  }
+
+footer{
+	width: 100%;
+	height: 100px;
+	color: #f7f6f5;
+	background-color:  #efefef;
+	box-shadow: inset 0px 2px 2px #dedede;
+}
+
+main{
+	background-color: #f5f5f5;
+	padding-top: 60px;
+	/*padding-bottom: 60px;*/
+}

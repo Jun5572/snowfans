@@ -1,0 +1,67 @@
+<main>
+	<div class="content-wrapper">
+		
+		<div class="event-info-wrapper">
+			<h2 class="title">@event.title</h2>
+
+			<table>
+				<tbody>
+					<tr>
+						<th class="t-head">詳細</th>
+						<td class="t-data">@event.description</td>
+					</tr>
+					<tr>
+						<th class="t-head">日程</th>
+						<td class="t-data">@event.date</td>
+					</tr>
+					<tr>
+						<th class="t-head">エリア</th>
+						<td class="t-data">群馬・新潟・長野</td>
+					</tr>
+					<tr>
+						<th class="t-head">URL</th>
+						<td class="t-data">@event.url</td>
+					</tr>
+					<tr>
+						<th class="t-head">興味あり</th>
+						<td class="t-data">
+							<img class="interested-user-icon" src="/images/sample-user-image2.jpg" alt="">
+							<img class="interested-user-icon" src="/images/sample-user-image2.jpg" alt="">
+							<img class="interested-user-icon" src="/images/sample-user-image2.jpg" alt="">
+							<img class="interested-user-icon" src="/images/sample-user-image2.jpg" alt="">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="text-centering">
+				<div class="button interest box-shadow">興味あり</div>
+			</div>
+
+			<div>投稿ユーザー情報</div>
+			<div class="organizer-info-box">
+					<!-- <p class="organizer-name">username</p> -->
+				<div class="organizer-introduction2">
+					<img class="organizer-image" src="/images/sample-user-image2.jpg">
+					<p class="introduce-text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="comments-wrapper">
+			<div class="view-comments-box">
+				<%= render "comments/reception" %>
+				<%= render "comments/transmission" %>
+				<%= render "comments/transmission" %>
+				<%= render "comments/reception" %>
+				<%= render "comments/transmission" %>
+				<%= render "comments/reception" %>
+				<%= render "comments/transmission" %>
+				<%= render "comments/transmission" %>
+				<%= render "comments/reception" %>
+				<%= render "comments/reception" %>
+			</div>
+			<textarea class="comment-box" name=""></textarea>
+			<div href="#"class="button positive box-shadow send">送信</div>
+		</div>
+	</div>
+</main>

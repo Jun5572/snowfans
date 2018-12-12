@@ -1,0 +1,329 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#date{
+	margin-left: 20px;
+}
+
+
+
+.box-style-block{
+	width: 30%;
+	display: block;
+}
+
+.everyone{
+	display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+}
+
+
+.grid-item-main{
+}
+.grid-item-user-image{
+}
+.grid-item-user-int{
+}
+/*event親要素（一番外）*/
+.events-wrapper{
+	position: relative;
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 30px 0 60px 0;
+}
+
+.user-image{
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+}
+.user-introduction{
+	width: 300px;
+	height: 250px;
+	background-color: lightpink;
+}
+
+.event-box{
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 250px;
+	border-radius: 3px;
+	margin: 0 0 50px 0;
+	background-color: #fdfbfb;
+	/*app.scss内にbox-shadowあり*/
+}
+.event-user-image{
+	width: 200px;
+	height: 200px;
+	border-radius: 5px 0 0 0;
+	object-fit: cover;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.event-status{
+	font-size: 16px;
+}
+.event-title{
+	display: block;
+	color: #333399;
+	font-size: 22px;
+	margin-top: 20px;
+}
+.event-info{
+	width: 70%;
+	justify-content: space-around;
+	padding: 30px;
+}
+.event-description{
+	width: 95%;
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+
+.event-form-wrapper{
+	width: 40%;
+	padding: 20px 0 100px 0;
+	margin: 0 auto;
+}
+.event-form-box{
+	padding: 40px 20px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-label{
+	font-size: 18px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+/*events#show*/
+
+.content-wrapper{
+	display: flex;
+	width: 70%;
+	min-height: 100vh;
+	margin: 30px auto 0;
+}
+/*画面左半分イベント詳細*/
+.event-info-wrapper{
+	width: 60%;
+	padding: 40px 10px 0;
+	justify-content: center;
+}
+.title{
+
+}
+
+.organizer-info-box{
+	width: 100%;
+}
+
+.organizer-image{
+	position: absolute;
+	top: -35px;
+	left: -35px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	/*object-fit: cover;*/
+}
+.organizer-name{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.organizer-introduction{
+	width: 100%;
+	margin-left: 10px;
+	justify-content: center;
+}
+.organizer-introduction2 {
+    position: relative;
+    width: 80%;
+    min-height: 100px;
+    margin: 35px auto 0;
+    padding: 0 0 0 40px;
+    background-color: silver;
+    border-radius: 5px;
+}
+.introduce-text{
+	font-size: 15px;
+	padding: 10px;
+}
+.description{
+	min-height: 100px;
+	max-height: 200px;
+	padding: 10px;
+	/*background-color: #f5ecf4;*/
+}
+
+.event-area{
+
+}
+
+.event-date{
+
+}
+
+.url{
+
+}
+
+.interested-user-box{
+
+}
+
+.interest{
+	padding: 5px 15px;
+	display: inline-block;
+	font-size: 15px;
+	background-color: pink;
+	margin-bottom: 50px;
+}
+
+
+
+/*画面右半分コメントコンテンツ*/
+.comments-wrapper{
+	position: relative;
+	width: 50%;
+	justify-content: center;
+}
+.view-comments-box{
+	width: 100%;
+	max-height: 450px;
+	padding: 30px 0 50px 0;
+	overflow-y: auto;
+}
+.view-comments-box::after{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	top: 400px;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background: linear-gradient(transparent, #f5f5f5)
+}
+.comment-box{
+	margin-top: 20px;
+	padding: 10px;
+	min-width: 100%;
+	max-width: 100%;
+	height: 150px;
+}
+
+.comment-box:focus{
+	outline: 0;
+}
+
+table{
+	width: 100%;
+}
+
+table th,
+table td{
+	border-top: solid 1px #dedede;
+	vertical-align: top;
+}
+.t-head{
+	width: 110px;
+}
+.t-head, .t-data{
+	padding: 15px;
+}
+
+.reception-wrapper{
+	display: flex;
+	justify-content: flex-start;
+	margin: 10px 0 0 10px;
+}
+.transmission-wrapper{
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px 10px 0 0;
+}
+.user-icon{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+.comment{
+	display: inline-block;
+	position: relative;
+	max-width: 260px;
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 15px;
+}
+
+.reception{
+	background-color: white;
+	margin-left: 25px;
+}
+.reception:before{
+	content: "";
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    width: 10px;
+    height: 10px;
+    border-top: solid 7px transparent;
+    border-right: solid 20px white;
+    border-bottom: solid 7px transparent;
+    border-left: solid 25px transparent;
+}
+.reception-date{
+	font-size: 12px;
+	margin: 12px 0 0 12px;
+	line-height: 14px;
+}
+.transmission{
+	margin-right: 25px;
+	background-color: #00a1e9;
+	color: white;
+}
+.transmission:before{
+	content: "";
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    width: 10px;
+    height: 10px;
+    border-top: solid 7px transparent;
+    border-right: solid 20px transparent;
+    border-bottom: solid 7px transparent;
+    border-left: solid 25px #00a1e9;
+}
+.transmission-date{
+	text-align: right;
+	font-size: 12px;
+	line-height: 14px;
+	margin: 12px 12px 0 0;
+}
+
+.send{
+	padding: 5px 15px;
+	display: inline-block;
+	font-size: 15px;
+	color: #fff;
+	background-color: limegreen;
+}
+
+
+.new textarea{
+	outline: 0;
+	resize: none!important;
+	text-overflow: auto;
+}

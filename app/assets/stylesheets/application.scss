@@ -1,0 +1,289 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+
+
+/*日本語フォント*/
+/*font-family: "M PLUS Rounded 1c";*/
+/*英語フォント*/
+/*font-family: 'Chakra Petch', sans-serif;*/
+@import "semantic-ui";
+@import "semantic-ui/collections/menu";
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2, body{
+	font-family: "M PLUS Rounded 1c" !important;
+}
+html, body{
+	height: 100%;
+	color: #504946;
+	font-size: 18px;
+}
+
+i{
+	margin: 0 5px;
+}
+
+table{
+	border-collapse: collapse;
+}
+
+textarea{
+	resize: none;
+}
+
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/*エラーメッセージのフォントカラー*/
+#error_explanation {
+	color: #d70035;
+}
+
+/*共通-----------------------------*/
+
+.new-label{
+	/*三角を形成するCSS*/
+	width: 130px;
+	height: 130px;
+	border-top: 65px solid #e95464;
+	border-right: 65px solid #e95464;
+	border-bottom: 65px solid transparent;
+	border-left: 65px solid transparent;
+	/*--------------*/
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 15px;
+	border-radius: 0 3px;
+	color: white;
+	filter: drop-shadow(-1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+.transform-45deg{
+	position: absolute;
+    top: 35px;
+    right: 20px;
+    font-size: 25px;
+    transform: rotate(45deg);
+    color: white;
+}
+
+.fa-caret-left{
+	margin-right: 10px;
+}
+.fa-caret-right{
+	margin-left: 10px;
+}
+
+/*テキストセンタリング*/
+.text-centering{
+	text-align: center;
+}
+
+/*box,button要素shadow*/
+.box-shadow{
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+	transition: 200ms;
+}
+.box-shadow:hover{
+	box-shadow: 1px 2.5px 5px rgba(0, 0, 0, 0.3);
+}
+
+/*button-style関係*/
+.button{
+	display: inline-block;
+	border-radius: 3px;
+	opacity: 0.8;
+	cursor: pointer;
+	transition: 200ms;
+}
+.button:hover{
+	opacity: 1;
+}
+.button:active{
+	transform: translateY(2.5px);
+	box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
+}
+.sns-button{
+	width: 260px;
+	display: inline-block;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 15px;
+	color: white;
+}
+.twitter{
+	background-color: #55acee;
+}
+.facebook{
+	background-color: #3B5998;
+}
+
+.sign-up-style,
+.log-in-style{
+	border: none;
+	font-size: 20px;
+	padding: 15px 25px;
+	background-color: black;
+	color: white;
+	margin:30px 0 50px 0;
+}
+
+.search-area-style{
+	padding: 10px 30px;
+	background-color: #e8383d;
+	font-size: 18px;
+	color: white;
+}
+
+.select-date-style{
+	padding: 5px 10px;
+	background-color: silver;
+}
+
+.event-submit-style{
+	padding: 10px 20px;
+	background-color: #e8383d;
+	color: white;
+}
+
+/*共通end--------------------------*/
+
+.change-entrance{
+	width: 180px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px 0;
+	text-align: center;
+	opacity: 0.9;
+	font-size: 20px;
+	text-decoration: none;
+	color: white;
+	background-color: black;
+}
+.change-entrance:hover{
+	color: white;
+}
+.change-entrance:before{
+	content: "";
+	position: absolute;
+	bottom: -7px;
+	left: -7px;
+	width: 20px;
+	height: 20px;
+	border-bottom: solid 3px black;
+	border-left: solid 3px black;
+	transition: all 200ms ease;
+}
+.change-entrance:after {
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 20px;
+    height: 20px;
+    border-top: solid 3px black;
+    border-right: solid 3px black;
+    transition: all 200ms ease-out;
+}
+.change-entrance:hover:before,
+.change-entrance:hover:after{
+	width: 194px;
+	height: 60px;
+}
+
+.field{
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"]{
+	width: 100%;
+	color: #504946;
+	border: none;
+	border-bottom: solid 1px #504946;;
+	outline: 0;
+	background-color: transparent;
+	line-height: 35px;
+	transition: 500ms;
+}
+
+.underline{
+	width: 100%;
+	height: 1.5px;
+	background: #ff8000;
+	transform-origin: center center;
+	transform: scaleX(0);
+	transition: transform 150ms ease-out;
+}
+input:focus + .underline{
+	transform: scaleX(1);
+}
+
+.form-wrapper{
+	padding: 80px 0 80px 0;
+	width: 50%;
+	height: 100%;
+	background-color: #dcdcdc;
+}
+	.left{
+		float: left;
+	}
+	.right{
+		float: right;
+	}
+
+.form-box{
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 50px;
+}
+.actions{
+	float:right;
+}
+
+.image-wrapper{
+	/*background-color: black;*/
+	width: 50%;
+}
+
+.sign-in-title, .sign-up-title{
+	text-align: center;
+}
+
+.sign-in-background{
+	width: 100%;
+	max-height: 100vh;
+	padding: 80px 0 80px 0;
+	background-color: black;
+	object-fit: cover;
+}
+
+.en{
+	font-family: 'Chakra Petch', sans-serif;
+}
