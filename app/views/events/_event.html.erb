@@ -1,0 +1,38 @@
+<!-- イベント投稿一覧表示のテンプレート -->
+<div class="event-box box-shadow">
+<span class="posted-date">投稿日:<%= event.created_at.strftime("%-m月%-d日") %></span>
+	<!-- 新規投稿ラベル -->
+	<div id="newlabel">
+		<div class="new-label"></div>
+		<p class="transform-45deg">New!</p>
+	</div>
+	<!-- 新規投稿ラベルend -->
+
+	<div class="box-style-block">
+		<%= link_to image_tag(event.user.thumbnail_id.gsub(/_normal/, ""), class: "event-user-image"), "#{event.user.provider_url}", target: "_blank" %>
+		<p><%= event.user.nickname %></p>
+		<!-- <div class="join-count-box">
+			<p>参加者：<%= event.joins.count %>人</p>
+		</div> -->
+	</div>
+	<div class="event-info">
+		<table class="event-status">
+			<tr>
+				<td class="text-right">エリア：</td>
+				<td class="text-centering"><%= event.area.name %></td>
+			</tr>
+			<tr>
+				<td class="text-right">日程：</td>
+				<td class="text-centering"><%= event.date.strftime("%Y年 %-m月 %-d日　(%a)") %></td>
+			</tr>
+		</table>
+		<!-- <p class="event-title"> -->
+			<%= link_to user_event_path(event.user_id ,event.id), class: "event-title" do %>
+			<%= event.title %>
+			<% end %>
+		<!-- </p> -->
+		<div class="event-description">
+			<%= event.description %>
+		</div>
+	</div>
+</div>

@@ -1,33 +1,26 @@
-<main>
 	<div class="event-form-wrapper">
-		<form class="ui large form event-form-box">
+		<%= form_for @event, class: "ui large form event-form-box" do |f| %>
 			<div class="field">
-				<div class="form-label">タイトル</div>
-				<input type="text" name="title" placeholder="丸沼高原に行きまーす！">
+				<%= f.label :title, "タイトル", class: "form-label" %>
+				<%= f.text_field :title, placeholder: "丸沼高原に行きまーす！" %>
 			</div>
 			<div class="field new">
-				<div class="form-label">詳細</div>
-				<textarea></textarea>
+				<!-- <div class="form-label">詳細</div> -->
+				<%= f.label :description, "詳細", class: "form-label" %>
+				<%= f.text_area :description %>
 			</div>
 			<div class="field">
-				<div class="form-label">日程</div>
-				<div class="button select-date-style box-shadow" type=""><p>日程を選択</p></div>
-				<span id="date">ここに指定した日程を表示</span>
+				<%= f.label :date, "日程", class: "form-label" %>
+				<label class="date-custom">
+					<span class="button select-date-style box-shadow"><p>日程を選択</p></span>
+					<%= f.date_field :date, value: Date.today, min: Date.today, max: "9999/12/31", prompt: "選択してください" %>
+				</label>
 			</div>
 			<div class="field">
-				<div class="form-label">エリア</div>
-				<div class="ui selection dropdown">
-					<input type="hidden" name="area">
-					<i class="dropdown icon"></i>
-					<div class="default text">エリアを選択</div>
-					<div class="menu">
-						<div class="item" data-value="0">群馬・長野・新潟</div>
-						<div class="item" data-value="1">秋田・山形・岩手</div>
-					</div>
-				</div>
+				<%= f.label :area, "エリア", class: "form-label" %>
+				<%= f.collection_select(:area_id, Area.all, :id, :name, prompt: "選択してください", class: "box-shadow") %>
 			</div>
-			<div class="button event-submit-style box-shadow" type=""><p>投稿</p></div>
-		</form>
+			<%= f.submit("投稿", class: "button event-submit-style box-shadow") %>
+		<% end %>
 		<div id="calendar"></div>
 	</div>
-</main>

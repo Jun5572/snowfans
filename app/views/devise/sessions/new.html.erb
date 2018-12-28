@@ -5,7 +5,7 @@
   <div class="form-box">
     <h2 class="sign-up-title">ログイン</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field email">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: false, autocomplete: "email" %>
@@ -29,11 +29,14 @@
       <div class="actions">
         <%= f.submit "ログイン", class: "log-in-style box-shadow" %>
       </div>
-        <p class="sns-button twitter box-shadow"><i class="fab fa-twitter"></i>twitterアカウントでログイン</p>
-        <p class="sns-button facebook box-shadow"><i class="fab fa-facebook-f"></i>facebookアカウントでログイン</p>
     <% end %>
-
-    <%= render "devise/shared/links" %>
+    <%= link_to user_twitter_omniauth_authorize_path, class: "sns-button twitter box-shadow" do %>
+      <p class="en"><i class="fab fa-twitter"></i>twitter</p>
+    <% end %>
+    <%= link_to user_twitter_omniauth_authorize_path, class: "sns-button facebook box-shadow" do %>
+      <p class="en"><i class="fab fa-facebook-f"></i>facebook</p>
+    <% end %>
+    <%#= render "devise/shared/links" %>
   </div>
   
 </div>

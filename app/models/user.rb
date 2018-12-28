@@ -1,22 +1,60 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  attachment :thumbnail
+
+  has_many :joins,dependent: :destroy
+  has_many :interests, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :comment, dependent: :destroy
+  has_many :notifications
+  has_many :authorizations
+
+  belongs_to :area
+
+  acts_as_followable
+  acts_as_follower
+
   devise	:database_authenticatable,
   				:registerable,
         	:recoverable,
         	:rememberable,
-        	:trackable,
+        	# :trackable,
         	:validatable,
+          # :timeoutable,
         	:omniauthable
 
 
-  has_many :events
-  has_many :comment
-  has_many :notification
-  has_many :follows
+  # UserモデルにSNS認証が要求されたときにユーザーを生成する機能
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create( uid: auth.uid,
+                          provider: auth.provider,
+                          nickname: auth.info.name,
+                          thumbnail_id: auth.info.image,
+                          provider_url: auth.info.urls.Twitter,
+                          description: auth.info.description,
+                          area_id: 1,
+                          email: User.dummy_email(auth),
+                          password: Devise.friendly_token[0, 20]
+      )
+    end
+    return user
+
+  end
+
+  def list_up(user)
+    self.where(user_id: user)
+  end
 
 
+  private
 
 
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
 
 end

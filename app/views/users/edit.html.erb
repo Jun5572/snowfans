@@ -1,0 +1,36 @@
+	<div class="grid-container">
+		<div class="grid-item-main edit-page">
+			<div class="edit-fillter-wapper">
+				<div class="editing">
+					<i class="fas fa-cog fa-2x faa-spin animated"></i>
+					<p>登録情報変更中...</p>
+				</div>
+			</div>
+				<div class="everyone">
+					<p><%= @user.nickname %>さんの予定</p>
+				</div>
+				<div class="events-wrapper">
+					<%= render partial: "users/event", collection: @events %>
+				</div>
+		</div>
+		<div class="grid-item-user">
+			<%= image_tag(@user.thumbnail_id.gsub(/_normal/, ""), class: "showpage-thumbnail")  %>
+			<div class="user-infomation">
+				<%= form_for @user do |f| %>
+					<%= f.text_field :nickname %>
+					<div class="user-introduction"><%= f.text_area :description %></div>
+					<table class="user-area-info">
+						<tr>
+							<td class="home-area">ホームエリア</td>
+						</tr>
+						<tr>
+							<td><%= f.collection_select(:area_id, Area.all, :id, :name, prompt: "選択してください") %></td>
+						</tr>
+					</table>
+					<%= f.submit "更新", class: "button send"%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+

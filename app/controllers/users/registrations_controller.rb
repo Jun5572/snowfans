@@ -10,9 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    # ユーザーの登録に成功していればsession[:omniouth]は不要なので削除するという記述
+    session[:omniouth] = nil unless @user.new_record?
+  end
 
   # GET /resource/edit
   # def edit
@@ -38,8 +40,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+
+  
+      
+    end
+    
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

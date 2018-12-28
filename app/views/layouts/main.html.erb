@@ -9,6 +9,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+
     <!-- <link rel='stylesheet' href='fullcalendar/fullcalendar.css' /> -->
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -23,9 +26,38 @@
 
   <body>
     <header id="header" class="">
-      header
+      <% if user_signed_in? %>
+        <nav class="global-nav">
+          <ul>
+            <div class="nav-box">
+              <li class="nav-list button"></i><%= link_to  "全国のゲレンデ情報をCheck!", "https://snow.gnavi.co.jp/", target: "_blank" %></li>
+              <li class="nav-list button"><%= link_to "みんなの予定", root_path %></li>
+              <li class="nav-list button"><%= link_to "予定を投稿", new_event_path %></li>
+            </div>
+            <li class="provider-link">
+              <%= link_to user_path(current_user.id) do %>
+                <div class="loginuser">
+                  <div class="loginuser-name ellipsis"><%= current_user.nickname %></div>
+                  <%= image_tag(current_user.thumbnail_id) %>
+                </div>
+              <% end %>
+            </li>
+            <li class="button">
+              <%= link_to edit_user_path(current_user) do %>
+                <i class="fas fa-cogs"></i>
+              <% end %>
+            </li>
+            <li><%= link_to "Sign out", destroy_user_session_path, class: "button sign-out", method: :delete %></li>
+          </ul>
+        </nav>
+      <% end %>
     </header><!-- /header -->
-    <%= yield %>
+    <main>
+      <div class="main-wrapper">
+      <%= render "layouts/flash_messages" %>
+      <%= yield %>
+      </div>
+    </main>
     <footer id="footer" class="">
       footer
     </footer>

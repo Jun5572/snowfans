@@ -1,6 +1,25 @@
 class Event < ApplicationRecord
-	has_many :interests
-	has_many :comments
+
+
+	has_many :interests, dependent: :destroy
+	has_many :joins, dependent: :destroy
+	has_many :join_users, through: :joins, source: :user
+	has_many :check_users, through: :interests, source: :user
+	has_many :comments, dependent: :destroy
 
 	belongs_to :user
+	belongs_to :area
+
+	validates :title, presence: true
+	validates :description, presence: true
+	validates :area_id, presence: true
+
+
+	def join?(user)
+		join_users.include?(user)
+	end
+
+	def checked?(user)
+		check_users.include?(user)
+	end
 end

@@ -29,7 +29,9 @@
   box-sizing: border-box;
 }
 
-h2, body{
+
+
+h1,h2,h3,h4,h5,h6, body, input[type="text"], textarea{
 	font-family: "M PLUS Rounded 1c" !important;
 }
 html, body{
@@ -42,12 +44,35 @@ i{
 	margin: 0 5px;
 }
 
-table{
-	border-collapse: collapse;
+a{
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    text-decoration: none;
+    /*color: #504946;*/
+}
+a:hover{
+    color: #504946;
 }
 
-textarea{
-	resize: none;
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+.event-info-wrapper table th,
+.event-info-wrapper table td{
+	border-top: solid 1px #dedede;
+	vertical-align: top;
+}
+
+label{
+	display: block;
+}
+
+input, select{
+	outline: 0;
 }
 
 .clearfix::after{
@@ -65,25 +90,25 @@ textarea{
 
 .new-label{
 	/*三角を形成するCSS*/
-	width: 130px;
-	height: 130px;
-	border-top: 65px solid #e95464;
-	border-right: 65px solid #e95464;
-	border-bottom: 65px solid transparent;
-	border-left: 65px solid transparent;
-	/*--------------*/
-	position: absolute;
-	top: 0;
-	right: 0;
-	font-size: 15px;
-	border-radius: 0 3px;
-	color: white;
-	filter: drop-shadow(-1px 1px 2px rgba(0, 0, 0, 0.2));
+	width: 120px;
+    height: 120px;
+    border-top: 60px solid #e95464;
+    border-right: 60px solid #e95464;
+    border-bottom: 60px solid transparent;
+    border-left: 60px solid transparent;
+    /*--------------------------------*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 15px;
+    border-radius: 0 3px;
+    color: white;
+    filter: drop-shadow(-1px 1px 2px rgba(0, 0, 0, 0.2));
 }
 .transform-45deg{
 	position: absolute;
-    top: 35px;
-    right: 20px;
+    top: 25px;
+    right: 15px;
     font-size: 25px;
     transform: rotate(45deg);
     color: white;
@@ -96,9 +121,17 @@ textarea{
 	margin-left: 10px;
 }
 
-/*テキストセンタリング*/
 .text-centering{
 	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+
+.ellipsis{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /*box,button要素shadow*/
@@ -114,8 +147,13 @@ textarea{
 .button{
 	display: inline-block;
 	border-radius: 3px;
+	border-color: transparent;
 	opacity: 0.8;
 	cursor: pointer;
+	transition: 200ms;
+}
+.button i{
+	color: orangered;
 	transition: 200ms;
 }
 .button:hover{
@@ -126,12 +164,16 @@ textarea{
 	box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
 }
 .sns-button{
-	width: 260px;
+	width: 100%;
 	display: inline-block;
 	text-align: center;
+	margin-bottom: 10px;
 	padding: 10px 0;
 	font-size: 15px;
+}
+.sns-button p{
 	color: white;
+	font-size: 1.0rem;
 }
 .twitter{
 	background-color: #55acee;
@@ -152,9 +194,15 @@ textarea{
 
 .search-area-style{
 	padding: 10px 30px;
-	background-color: #e8383d;
+	background-color: orangered;
 	font-size: 18px;
 	color: white;
+}
+.view-all{
+	padding: 10px 30px;
+	background-color: #afafb0;
+	font-size: 18px;
+	color: #504946;
 }
 
 .select-date-style{
@@ -164,7 +212,7 @@ textarea{
 
 .event-submit-style{
 	padding: 10px 20px;
-	background-color: #e8383d;
+	background-color: orangered;
 	color: white;
 }
 
@@ -216,20 +264,17 @@ textarea{
 }
 
 .field{
-	margin-bottom: 20px;
+	padding-bottom: 20px;
 	font-size: 20px;
 }
-input[type="text"],
-input[type="email"],
-input[type="search"],
-input[type="password"]{
+
+input[type="text"]{
 	width: 100%;
+	padding: 5px;
 	color: #504946;
 	border: none;
-	border-bottom: solid 1px #504946;;
+	border-radius: 5px;
 	outline: 0;
-	background-color: transparent;
-	line-height: 35px;
 	transition: 500ms;
 }
 
@@ -286,4 +331,6 @@ input:focus + .underline{
 
 .en{
 	font-family: 'Chakra Petch', sans-serif;
+	letter-spacing: 1px;
 }
+
