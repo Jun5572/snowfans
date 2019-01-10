@@ -30,16 +30,31 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
     unless user
-      user = User.create( uid: auth.uid,
-                          provider: auth.provider,
-                          nickname: auth.info.name,
-                          thumbnail_id: auth.info.image,
-                          provider_url: auth.info.urls.Twitter,
-                          description: auth.info.description,
-                          area_id: 1,
-                          email: User.dummy_email(auth),
-                          password: Devise.friendly_token[0, 20]
-      )
+      if auth.provider == "twitter"
+        user = User.create( uid: auth.uid,
+                            provider: auth.provider,
+                            nickname: auth.info.name,
+                            thumbnail_id: auth.info.image,
+                            provider_url: auth.info.urls.Twitter,
+                            description: auth.info.description,
+                            area_id: 9,
+                            email: User.dummy_email(auth),
+                            password: Devise.friendly_token[0, 20]
+        )
+      else
+        # provider = facebook
+        binding.pry
+        user = User.create( uid: auth.uid,
+                            provider: auth.provider,
+                            nickname: auth.info.name,
+                            thumbnail_id: auth.info.image,
+                            provider_url: auth.extra.raw_info.link,
+                            description: "自己紹介文はありません",
+                            area_id: 9,
+                            email: User.dummy_email(auth),
+                            password: Devise.friendly_token[0, 20]
+        )
+      end
     end
     return user
 
@@ -48,7 +63,6 @@ class User < ApplicationRecord
   def list_up(user)
     self.where(user_id: user)
   end
-
 
   private
 

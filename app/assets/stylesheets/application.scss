@@ -71,8 +71,9 @@ label{
 	display: block;
 }
 
-input, select{
+input, select, textarea{
 	outline: 0;
+	background-color: #f5f5f5;
 }
 
 .clearfix::after{
@@ -112,6 +113,9 @@ input, select{
     font-size: 25px;
     transform: rotate(45deg);
     color: white;
+}
+.hidden{
+	display: none;
 }
 
 .fa-caret-left{
@@ -164,10 +168,10 @@ input, select{
 	box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
 }
 .sns-button{
-	width: 100%;
-	display: inline-block;
+	width: 300px;
+	display: block;
 	text-align: center;
-	margin-bottom: 10px;
+	margin: 20px auto;
 	padding: 10px 0;
 	font-size: 15px;
 }
@@ -193,13 +197,13 @@ input, select{
 }
 
 .search-area-style{
-	padding: 10px 30px;
+	padding: 5px 30px;
 	background-color: orangered;
 	font-size: 18px;
 	color: white;
 }
 .view-all{
-	padding: 10px 30px;
+	padding: 5px 30px;
 	background-color: #afafb0;
 	font-size: 18px;
 	color: #504946;
@@ -215,9 +219,58 @@ input, select{
 	background-color: orangered;
 	color: white;
 }
+.decision{
+	padding: 10px 30px;
+	display: inline-block;
+	font-size: 15px;
+	letter-spacing: 1px;
+	color: #fff;
+	background-color: #1e90ff;
+}
 
 /*共通end--------------------------*/
-
+.about{
+	text-align: center;
+}
+.about-box, .app-introduction{
+	margin: 60px auto;
+	width: 60%;
+}
+.app-intro{
+	display: flex;
+	flex-direction: row;
+}
+.app-intro:nth-child(even){
+	flex-direction: row-reverse;
+}
+.app-intro-img1{
+	width: 300px;
+	height: 250px;
+	background-color: lime;
+}
+.app-intro-text{
+	background-color: pink;
+}
+.about-box i{
+	font-size: 8rem;
+	display: block;
+	text-align: center;
+}
+.entrance-font{
+	font-family: 'Fredericka the Great', cursive!important;
+}
+.bottom-area{
+	height: 150px;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+.whats{
+	text-align: center;
+	letter-spacing: 1px;
+	padding-top: 30px;
+}
 .change-entrance{
 	width: 180px;
 	position: absolute;
@@ -291,10 +344,13 @@ input:focus + .underline{
 }
 
 .form-wrapper{
+	position: relative;
 	padding: 80px 0 80px 0;
 	width: 50%;
 	height: 100%;
-	background-color: #dcdcdc;
+	background-image: url("/images/polygon-background3.jpg");
+	background-attachment: fixed;
+	background-size: cover;
 }
 	.left{
 		float: left;
@@ -304,27 +360,43 @@ input:focus + .underline{
 	}
 
 .form-box{
-	width: 50%;
-	margin: 0 auto;
-	padding-top: 50px;
+	/*上下左右中央寄せ*/
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/*ここまで*/
+    width: 50%;
+    color: #efefef;
+    letter-spacing: 2px;
+    text-align: center;
 }
 .actions{
 	float:right;
 }
 
 .image-wrapper{
-	/*background-color: black;*/
-	width: 50%;
+	width: 100%;
 }
 
 .sign-in-title, .sign-up-title{
+	display: block;
 	text-align: center;
+	margin-bottom: 50px;
+	color: #efefef;
+	font-size: 5rem;
+	letter-spacing: 5px;
+	line-height: 5rem;
+	filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.5));
+}
+.sign-up-title span{
+	color: orangered;
 }
 
 .sign-in-background{
 	width: 100%;
 	max-height: 100vh;
-	padding: 80px 0 80px 0;
+	padding: 80px 0 0 0;
 	background-color: black;
 	object-fit: cover;
 }
@@ -333,4 +405,6 @@ input:focus + .underline{
 	font-family: 'Chakra Petch', sans-serif;
 	letter-spacing: 1px;
 }
+
+
 

@@ -6,13 +6,20 @@
 	<% end %>
 </div>
 <div class="text-centering">
-	<% if @path.is('events#narrow_down') %>
-		<%= link_to events_path do %>
-		<div class="button view-all box-shadow"><p>絞り込み解除</p></div>
+	<% unless current_user.area.code == 99 %>
+		<% if @path.is('events#narrow_down') %>
+			<%= link_to events_path do %>
+			<div class="button view-all box-shadow"><p>絞り込み解除</p></div>
+			<% end %>
+		<% else %>
+			<%= link_to narrow_down_events_path do %>
+			<div class="button search-area-style box-shadow"><p>ホームエリア(<%= current_user.area.name %>)で絞り込み</p></div>
+			<% end %>
 		<% end %>
 	<% else %>
-		<%= link_to narrow_down_events_path do %>
-		<div class="button search-area-style box-shadow"><p>ホームエリア(<%= current_user.area.name %>)で絞り込み</p></div>
+		<p>ホームエリアを設定すると、そのエリアで絞り込み検索ができるようになります</p>
+		<%= link_to edit_user_path(current_user.id) do %>
+			<p class="button search-area-style box-shadow">ホームエリアを設定する</p>
 		<% end %>
 	<% end %>
 </div>
@@ -23,3 +30,4 @@
 			<%= render @events %>
 		<% end %>
 </div>
+

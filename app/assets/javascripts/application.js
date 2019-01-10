@@ -15,7 +15,7 @@
 //= require semantic-ui
 //= require activestorage
 //= require turbolinks
-// require jquery.turbolinks
+//= require jquery.turbolinks
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/lang/ja
@@ -39,6 +39,16 @@
 //   });
 // });
 
-// semantic UI ドロップダウン
-$('select.dropdown').dropdown();
-$('.ui.dropdown').dropdown();
+// flashメッセージfadeOut
+$(function(){
+		$('#flash').slideDown('slow');
+	setTimeout(function(){
+		$('#flash').slideUp('slow');
+	}, 2000);
+});
+
+
+
+
+
+

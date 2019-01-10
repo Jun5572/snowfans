@@ -4,7 +4,8 @@ class EventsController < ApplicationController
 
 # 投稿一覧（HOME）
   def index
-    @events = Event.all.order(created_at: :desc)
+    # @events = Event.all.order(created_at: :desc)
+    @events = Event.where("date >= ?", Date.today).order(created_at: :desc)
   end
 
   # 絞り込み検索
@@ -25,11 +26,15 @@ class EventsController < ApplicationController
   end
 
   def create
-  	event = Event.new(event_params)
-    event.user_id = current_user.id
-    flash.now[:notice] = "予定を投稿しました"
-    event.save
-    redirect_to events_path
+  	@event = Event.new(event_params)
+    @event.user_id = current_user.id
+    if @event.save
+      flash[:notice] = "予定を投稿しました"
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:error] = "投稿に失敗しました"
+      render :new
+    end
   end
 
 # 投稿詳細

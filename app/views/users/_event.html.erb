@@ -2,18 +2,13 @@
 <div class="event-box box-shadow">
 	<span class="posted-date">投稿日:<%= event.created_at.strftime("%-m月%-d日") %></span>
 
-	<div id="newlabel">
-		<div class="new-label"></div>
-		<p class="transform-45deg">New!</p>
-	</div>
+	<!-- 新規投稿ラベル -->
+	<%= render 'events/new_label' if event.new_arrival? %>
 
 
 	<div class="box-style-block">
 		<%= link_to image_tag(@user.thumbnail_id.gsub(/_normal/, ""), class: "event-user-image"), "#{@user.provider_url}", target: "_blank" %>
-		<div class="join-count-box">
-			<p>参加者：</p>
-			<%= render partial: "events/join", collection: event.joins %>
-		</div>
+		<p><%= @user.nickname %></p>
 	</div>
 	<div class="event-info">
 		<table class="event-status">
@@ -26,13 +21,17 @@
 				<td class="text-centering"><%= event.date.strftime("%Y年 %-m月 %d日 (%a)") %></td>
 			</tr>
 		</table>
-		<p class="event-title">
+		<p class="event-title ellipsis">
 			<%= link_to user_event_path(event.user_id, event.id) do %>
 			<%= event.title %>
 			<% end %>
 		</p>
 		<div class="event-description ellipsis">
 			<%= event.description %>
+		</div>
+		<div class="join-count-box">
+			<p>参加者：</p>
+			<%= render partial: "events/join", collection: event.joins %>
 		</div>
 	</div>
 </div>

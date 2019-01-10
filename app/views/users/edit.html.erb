@@ -1,5 +1,10 @@
 	<div class="grid-container">
 		<div class="grid-item-main edit-page">
+			<div class="sub-nav">
+				<%= link_to "ブックマーク", check_list_user_path(current_user) %>
+				<%= link_to "参加予定", join_list_user_path(current_user) %>
+				<%= link_to "自分の予定", user_path(current_user) %>
+			</div>
 			<div class="edit-fillter-wapper">
 				<div class="editing">
 					<i class="fas fa-cog fa-2x faa-spin animated"></i>
@@ -24,10 +29,10 @@
 							<td class="home-area">ホームエリア</td>
 						</tr>
 						<tr>
-							<td><%= f.collection_select(:area_id, Area.all, :id, :name, prompt: "選択してください") %></td>
+							<td><%= f.collection_select(:area_id, Area.where.not(code: 99), :id, :name) %></td>
 						</tr>
 					</table>
-					<%= f.submit "更新", class: "button send"%>
+					<%= f.submit "更新", class: "button decision box-shadow"%>
 				<% end %>
 			</div>
 		</div>

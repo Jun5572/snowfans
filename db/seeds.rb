@@ -17,6 +17,7 @@ Area.create(code: 4, name: "北陸")
 Area.create(code: 5, name: "中京")
 Area.create(code: 6, name: "関西")
 Area.create(code: 7, name: "中国・四国・九州")
+Area.create(code: 99, name: "未設定")
 # -----------------------------------------------
 
 

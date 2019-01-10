@@ -54,6 +54,18 @@
 	background-color: #fdfbfb;
 	/*app.scss内に.box-shadowあり*/
 }
+.event-box::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("/images/footer-image.jpg");
+	background-attachment: fixed;
+	opacity: 0.5;
+}
 .event-user-image{
 	width: 100px;
 	height: 100px;
@@ -75,6 +87,7 @@
 }
 .event-info{
 	width: 70%;
+	max-height: 100%;
 	justify-content: space-around;
 	padding: 10px 40px 10px 20px;
 }
@@ -225,6 +238,7 @@
 	padding: 15px;
 }
 .t-data a{
+	font-size: 0.9rem;
 	display: inline-flex;
 }
 
@@ -336,11 +350,17 @@
 	background-color: limegreen;
 }
 
-.new > textarea{
-	width: 100%;
-	height: 200px;
+/*.new > textarea{
+	min-width: 100%;
+	min-height: 200px;
+}*/
+.new-event-description{
+	min-width: 100%;
+	min-height: 200px;	
 }
 textarea{
+	/*min-width: 100%;
+	min-height: 200px;*/
 	padding: 5px;
 	border-radius: 5px;
 	border-color: #dedede;
@@ -352,8 +372,8 @@ textarea{
 	width: 100%;
 	font-size: 1rem;
 	height: 40px;
+	border-color: #dedede;
 }
-
 .date-custom{
 	position: relative;
 }

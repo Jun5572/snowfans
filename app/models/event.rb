@@ -22,4 +22,9 @@ class Event < ApplicationRecord
 	def checked?(user)
 		check_users.include?(user)
 	end
+
+	def new_arrival?
+		created_at + 1.week > Date.today
+	end
+
 end

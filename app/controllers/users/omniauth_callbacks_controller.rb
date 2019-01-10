@@ -9,6 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from :twitter
   end
 
+
+  def facebook
+    callback_from :facebook
+  end
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 
@@ -36,16 +40,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provider = provider.to_s
 
 
-    @user = User.find_for_oauth(request.env['omniauth.auth'].except("extra"))
+    @user = User.find_for_oauth(request.env['omniauth.auth'])
 
     if @user.persisted?
-      flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
-      puts request.env['omniauth.auth'].except("extra")
-      sign_in_and_redirect @user, event: :authentication
+        flash[:welcome] = "こんにちは！#{@user.nickname}さん！#{provider}アカウントでログインしました！"
+        puts request.env['omniauth.auth']
+      # flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
+        sign_in_and_redirect @user, event: :authentication
     else
       session["devise.#{provider}_data"] = request.env['omniauth.auth'].except("extra")
       puts session["devise.#{provider}_data"].to_hash
-      puts "ログイン失敗"
+      flash[:error] = "ログインに失敗しました"
       redirect_to new_user_session_path
     end
   end

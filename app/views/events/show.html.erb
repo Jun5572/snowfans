@@ -54,7 +54,7 @@
 				<div class="text-centering">投稿ユーザー情報</div>
 				<div class="organizer-info-box">
 					<div class="organizer-introduction2">
-						<%= link_to "#{@user.nickname}さんの予定をもっと見る", user_path(@user.id), class: "event-index" unless @user == current_user %>
+						<%= link_to "#{@user.nickname}さんの他の予定をチェック", user_path(@user.id), class: "event-index" unless @user == current_user %>
 						<%= link_to image_tag(@user.thumbnail_id.gsub(/_normal/, ""), class: "organizer-image"), "#{@user.provider_url}", target: "_blank" %>
 						<p class="introduce-text"><%= auto_link(@user.description, html: {target: "_blank"}) %></p>
 					</div>
@@ -62,7 +62,7 @@
 			<% end %>
 		</div>
 		<div class="comments-wrapper">
-			<div class="view-comments-box">
+			<div id="chat" class="view-comments-box">
 				<% @comments.each do |comment| %>
 					<% if comment.user_id == current_user.id %>
 						<%= render "comments/send", comment: comment %>
@@ -77,3 +77,8 @@
 			<% end %>
 		</div>
 	</div>
+
+<script>
+    // 一番下までスクロールする
+    $('#chat').animate({scrollTop: $('#chat')[0].scrollHeight}, 'fast');
+</script>

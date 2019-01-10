@@ -1,5 +1,12 @@
 	<div class="grid-container">
 		<div class="grid-item-main">
+			<% if @user == current_user %>
+				<div class="sub-nav">
+					<%= link_to "ブックマーク", check_list_user_path(current_user) %>
+					<%= link_to "参加予定", join_list_user_path(current_user) %>
+					<%= link_to "自分の予定", user_path(current_user) %>
+				</div>
+			<% end %>
 			<div class="everyone">
 				<% if @path.is('users#check_lists') %>
 					<p>ブックマーク</p>
@@ -30,18 +37,14 @@
 					</tr>
 					<tr>
 						<td>
-							<% if @user.area_id.blank?  %>
-								登録されていません
+							<% if @user.area_id.blank? %>
+								<p>登録されていません</p>
 							<% else %>
-								<%= @user.area.name %>
+								<p><%= @user.area.name %></p>
 							<% end %>
 						</td>
 					</tr>
 				</table>
-				<div class="list-up-box">
-					<%= link_to "ブックマーク", check_list_user_path(current_user.id), class: "button check-list box-shadow" %>
-					<%= link_to "参加予定", join_list_user_path(current_user.id), class: "button join-list box-shadow" %>
-				</div>
 			</div>
 		</div>
 	</div>

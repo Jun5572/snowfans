@@ -9,7 +9,26 @@
 	z-index: 3000;
 	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
 }
-
+.error{
+	position: fixed;
+	top: 60px;
+	width: 100%;
+	padding: 5px 0;
+	background-color: red;
+	color: #efefef;
+	z-index: 3000;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.first-welcome, .welcome{
+	position: fixed;
+	top: 60px;
+	width: 100%;
+	padding: 5px 0;
+	background-color: orangered;
+	color: #efefef;
+	z-index: 3000;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
 header{
 	position: fixed;
 	top: 0;
@@ -27,6 +46,9 @@ footer{
 	height: 200px;
 	color: #f7f6f5;
 	background-color:  #efefef;
+	background-image: url("images/footer-image.jpg");
+	background-position: bottom center;
+	background-size: cover;
 	box-shadow: inset 0px 2px 2px #dedede;
 	z-index: 9999;
 }
@@ -85,7 +107,7 @@ nav li{
 	transition: 100ms;
 }
 .provider-link a:hover{
-	background-color: black;
+	background-color: orangered;
 }
 
 .global-nav img{
@@ -101,7 +123,7 @@ nav li{
 }
 .nav-list a{
 	display: inline-block;
-	padding: 5px 10px;
+	padding: 13px 10px;
 	color: #dedede;
 	font-size: 0.8rem;
 	transition: 100ms;
@@ -111,7 +133,24 @@ nav li{
 	/*background-color: #5f7ba0;*/
 	background-color: orangered;
 }
-
+.notification-bell{
+	position: relative;
+	margin: 0 5px;
+}
+.notification-bell span{
+	position: absolute;
+    top: -10px;
+    right: -10px;
+    color: #efefef;
+    background-color: red;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 20px;
+    font-weight: bold;
+    height: 20px;
+    border-radius: 50%;
+    line-height: 20px;
+}
 .sign-out{
 	margin-left: 50px;
 	padding: 3px 10px;
@@ -122,6 +161,7 @@ nav li{
 .loginuser{
 	display: flex;
 }
+
 .loginuser-name{
 	max-width: 110px;
 	line-height: 48px;

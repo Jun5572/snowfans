@@ -7,7 +7,7 @@
 			<div class="field new">
 				<!-- <div class="form-label">詳細</div> -->
 				<%= f.label :description, "詳細", class: "form-label" %>
-				<%= f.text_area :description %>
+				<%= f.text_area :description, class: "new-event-description" %>
 			</div>
 			<div class="field">
 				<%= f.label :date, "日程", class: "form-label" %>
@@ -17,8 +17,8 @@
 				</label>
 			</div>
 			<div class="field">
-				<%= f.label :area, "エリア", class: "form-label" %>
-				<%= f.collection_select(:area_id, Area.all, :id, :name, prompt: "選択してください", class: "box-shadow") %>
+				<%= f.label :area, "ゲレンデがあるエリア", class: "form-label" %>
+				<%= f.collection_select(:area_id, Area.where.not(code: 99), :id, :name, prompt: "選択してください", class: "box-shadow") %>
 			</div>
 			<%= f.submit("投稿", class: "button event-submit-style box-shadow") %>
 		<% end %>
