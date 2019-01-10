@@ -1,0 +1,10 @@
+
+	<% if flash.now[:notice] %>
+		<p class="notice"><%= h(flash.now[:notice]) %></p>
+	<% elsif flash[:error] %>
+		<p class="error"><%= h(flash[:error]) %></p>
+	<% elsif flash[:first_welcome] %>
+		<p class="first-welcome"><%= h(flash[:first_welcome]) %></p>
+	<% elsif flash[:welcome] %>
+		<p class="welcome"><%= h(flash[:welcome]) %></p>
+	<% end %>

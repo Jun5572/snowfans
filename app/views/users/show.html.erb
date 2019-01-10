@@ -1,28 +1,50 @@
-<main>
 	<div class="grid-container">
 		<div class="grid-item-main">
+			<% if @user == current_user %>
+				<div class="sub-nav">
+					<%= link_to "ブックマーク", check_list_user_path(current_user) %>
+					<%= link_to "参加予定", join_list_user_path(current_user) %>
+					<%= link_to "自分の予定", user_path(current_user) %>
+				</div>
+			<% end %>
 			<div class="everyone">
-				<p>○○○さんの予定</p>
+				<% if @path.is('users#check_lists') %>
+					<p>ブックマーク</p>
+				<% elsif @path.is('users#join_lists') %>
+					<p>参加予定イベント</p>
+				<% else %>
+					<p><%= @user.nickname %>さんの予定</p>
+				<% end %>
 			</div>
 			<div class="events-wrapper">
-				<%= render 'events/event_detail_show' %>
-				<%= render 'events/event_detail_show' %>
-				<%= render 'events/event_detail_show' %>
-				<%= render 'events/event_detail_show' %>
-				<%= render 'events/event_detail_show' %>
+				<% if @path.is('users#check_lists') %>
+					<%= render partial: "interests/interest", collection: @interests %>
+				<% elsif @path.is('users#join_lists') %>
+					<%= render partial: "joins/join", collection: @joins %>
+				<% else %>
+					<%= render partial: "users/event", collection: @events %>
+				<% end %>
 			</div>
 		</div>
-		<div class="grid-item-user-image">
-				<img class="user-image" src="/images/sample-user-image.jpg" alt="">
-			<div class="user-introduction">
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
-				テキストテキストテキストテキスト
+		<div class="grid-item-user">
+			<%= image_tag(@user.thumbnail_id.gsub(/_normal/, ""), class: "showpage-thumbnail")  %>
+			<p><%= @user.nickname %></p>
+			<div class="user-infomation">
+				<div class="user-introduction"><%= auto_link(simple_format(@user.description), html: {target: "_blank"}) %></div>
+				<table class="user-area-info">
+					<tr>
+						<td class="home-area">ホームエリア</td>
+					</tr>
+					<tr>
+						<td>
+							<% if @user.area_id.blank? %>
+								<p>登録されていません</p>
+							<% else %>
+								<p><%= @user.area.name %></p>
+							<% end %>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
-</main>

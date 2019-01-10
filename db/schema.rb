@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_092935) do
+ActiveRecord::Schema.define(version: 2018_12_26_092218) do
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string "provider"
@@ -27,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_092935) do
     t.integer "send_by_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.index ["event_id"], name: "index_comments_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -37,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_11_25_092935) do
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_events_on_area_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -60,6 +71,15 @@ ActiveRecord::Schema.define(version: 2018_11_25_092935) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "joins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_joins_on_event_id"
+    t.index ["user_id"], name: "index_joins_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id"
     t.integer "notified_by_id"
@@ -81,6 +101,14 @@ ActiveRecord::Schema.define(version: 2018_11_25_092935) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "nickname"
+    t.string "thumbnail_id"
+    t.string "description"
+    t.string "provider_url"
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_users_on_area_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

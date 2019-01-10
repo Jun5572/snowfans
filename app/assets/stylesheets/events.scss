@@ -12,23 +12,17 @@
 .box-style-block{
 	width: 30%;
 	display: block;
+    text-align: center;
 }
-
+.box-style-block > a + p{
+	font-size: 0.7rem;
+}
 .everyone{
-	display: inline-block;
-    width: 100%;
     text-align: center;
     padding: 20px;
     font-size: 25px;
 }
 
-
-.grid-item-main{
-}
-.grid-item-user-image{
-}
-.grid-item-user-int{
-}
 /*event親要素（一番外）*/
 .events-wrapper{
 	position: relative;
@@ -43,43 +37,59 @@
 	height: 300px;
 	object-fit: cover;
 }
-.user-introduction{
-	width: 300px;
-	height: 250px;
-	background-color: lightpink;
+.posted-date{
+	position: absolute;
+    top: -20px;
+    right: 0px;
+    font-size: 0.8rem;
+    opacity: 0.5;
 }
-
 .event-box{
 	position: relative;
 	display: flex;
 	width: 100%;
-	height: 250px;
+	height: 200px;
 	border-radius: 3px;
 	margin: 0 0 50px 0;
 	background-color: #fdfbfb;
-	/*app.scss内にbox-shadowあり*/
+	/*app.scss内に.box-shadowあり*/
+}
+.event-box::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("/images/footer-image.jpg");
+	background-attachment: fixed;
+	opacity: 0.5;
 }
 .event-user-image{
-	width: 200px;
-	height: 200px;
-	border-radius: 5px 0 0 0;
+	width: 100px;
+	height: 100px;
+	margin-top: 40px;
+	border-radius: 5px;
 	object-fit: cover;
 	flex-direction: row;
 	justify-content: space-around;
 }
 .event-status{
-	font-size: 16px;
+	font-size: 1rem;
+	width: 400px;
 }
 .event-title{
 	display: block;
-	color: #333399;
-	font-size: 22px;
-	margin-top: 20px;
+	/*color: #333399;*/
+	font-size: 1.5rem;
+	margin: 10px;
 }
 .event-info{
 	width: 70%;
+	max-height: 100%;
 	justify-content: space-around;
-	padding: 30px;
+	padding: 10px 40px 10px 20px;
 }
 .event-description{
 	width: 95%;
@@ -117,11 +127,8 @@
 /*画面左半分イベント詳細*/
 .event-info-wrapper{
 	width: 60%;
-	padding: 40px 10px 0;
+	padding: 0 50px 0 10px;
 	justify-content: center;
-}
-.title{
-
 }
 
 .organizer-info-box{
@@ -132,10 +139,10 @@
 	position: absolute;
 	top: -35px;
 	left: -35px;
-	width: 70px;
-	height: 70px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
-	/*object-fit: cover;*/
+	border: solid 5px silver;
 }
 .organizer-name{
 	font-weight: bold;
@@ -151,10 +158,21 @@
     position: relative;
     width: 80%;
     min-height: 100px;
-    margin: 35px auto 0;
+    margin: 40px auto 30px;
     padding: 0 0 0 40px;
     background-color: silver;
     border-radius: 5px;
+}
+.organizer-introduction2 .event-index{
+	display: inline-block;
+    position: absolute;
+    top: -29px;
+    left: 25px;
+    font-size: 0.8rem;
+    padding: 2px 30px;
+    background-color: #242424;
+    color: #efefef;
+    border-radius: 0 30px 0px 0;
 }
 .introduce-text{
 	font-size: 15px;
@@ -167,28 +185,12 @@
 	/*background-color: #f5ecf4;*/
 }
 
-.event-area{
-
-}
-
-.event-date{
-
-}
-
-.url{
-
-}
-
-.interested-user-box{
-
-}
-
-.interest{
+.join{
 	padding: 5px 15px;
 	display: inline-block;
 	font-size: 15px;
 	background-color: pink;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 
@@ -201,7 +203,7 @@
 }
 .view-comments-box{
 	width: 100%;
-	max-height: 450px;
+	height: 450px;
 	padding: 30px 0 50px 0;
 	overflow-y: auto;
 }
@@ -216,25 +218,18 @@
 	background: linear-gradient(transparent, #f5f5f5)
 }
 .comment-box{
+	resize: none;
 	margin-top: 20px;
 	padding: 10px;
-	min-width: 100%;
-	max-width: 100%;
+	width: 100%;
 	height: 150px;
+	color: #504946;
+	border-radius: 5px;
+	border-color: #efefef;
 }
 
 .comment-box:focus{
 	outline: 0;
-}
-
-table{
-	width: 100%;
-}
-
-table th,
-table td{
-	border-top: solid 1px #dedede;
-	vertical-align: top;
 }
 .t-head{
 	width: 110px;
@@ -242,16 +237,20 @@ table td{
 .t-head, .t-data{
 	padding: 15px;
 }
+.t-data a{
+	font-size: 0.9rem;
+	display: inline-flex;
+}
 
 .reception-wrapper{
 	display: flex;
 	justify-content: flex-start;
-	margin: 10px 0 0 10px;
+	margin: 20px 0 0 10px;
 }
 .transmission-wrapper{
 	display: flex;
 	justify-content: flex-end;
-	margin: 10px 10px 0 0;
+	margin: 20px 10px 0 0;
 }
 .user-icon{
 	width: 50px;
@@ -259,15 +258,24 @@ table td{
 	border-radius: 50%;
 	object-fit: cover;
 }
+.send-user{
+	max-width: 90px;
+}
+.send-user > p{
+	font-size: 0.7rem;
+}
 .comment{
 	display: inline-block;
 	position: relative;
 	max-width: 260px;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 0 10px;
 	font-size: 15px;
 }
 
+.comment a:hover{
+	color: #0766ff;
+}
 .reception{
 	background-color: white;
 	margin-left: 25px;
@@ -284,11 +292,31 @@ table td{
     border-bottom: solid 7px transparent;
     border-left: solid 25px transparent;
 }
-.reception-date{
+.send-date{
 	font-size: 12px;
 	margin: 12px 0 0 12px;
 	line-height: 14px;
 }
+.send-date .far{
+	position: relative;
+	margin-top: 7px;
+	opacity: 0.7;
+	transition: 200ms;
+}
+.send-date .far::after{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	right: -25;
+	width: 30px;
+	content: "削除";
+	font-size: 0.6rem;
+}
+.send-date .far:hover,
+.send-date .far:hover::after,{
+	opacity: 1;
+}
+
 .transmission{
 	margin-right: 25px;
 	background-color: #00a1e9;
@@ -306,7 +334,7 @@ table td{
     border-bottom: solid 7px transparent;
     border-left: solid 25px #00a1e9;
 }
-.transmission-date{
+.receive-date{
 	text-align: right;
 	font-size: 12px;
 	line-height: 14px;
@@ -314,16 +342,67 @@ table td{
 }
 
 .send{
-	padding: 5px 15px;
+	padding: 10px 30px;
 	display: inline-block;
 	font-size: 15px;
+	letter-spacing: 1px;
 	color: #fff;
 	background-color: limegreen;
 }
 
-
-.new textarea{
+/*.new > textarea{
+	min-width: 100%;
+	min-height: 200px;
+}*/
+.new-event-description{
+	min-width: 100%;
+	min-height: 200px;	
+}
+textarea{
+	/*min-width: 100%;
+	min-height: 200px;*/
+	padding: 5px;
+	border-radius: 5px;
+	border-color: #dedede;
 	outline: 0;
-	resize: none!important;
-	text-overflow: auto;
+	color: #504946;
+	resize: none;
+}
+.field select{
+	width: 100%;
+	font-size: 1rem;
+	height: 40px;
+	border-color: #dedede;
+}
+.date-custom{
+	position: relative;
+}
+
+input[type="date"]{
+	position: relative;
+	padding: 0 10px;
+	width: 150px;
+	height: 36px;
+	border: 0;
+	background: transparent;
+	box-sizing: border-box;
+	font-size: 1.0rem;
+}
+input[type="date"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+input[type="date"]::-webkit-clear-button{
+  -webkit-appearance: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator{
+	position: absolute;
+	left: -125px;
+	top: 0px;
+	padding: 0;
+	width: 120px;
+	height: 38px;
+	border-radius: 5px;
+	background: transparent;
+	color: transparent;
+	cursor: pointer;
 }

@@ -99,3 +99,9 @@ gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 # カレンダーgem
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+# .envファイルでAPI keyを管理する
+gem 'dotenv-rails'
+
+# 自動aタグ(auto_link)
+gem 'rails_autolink'
