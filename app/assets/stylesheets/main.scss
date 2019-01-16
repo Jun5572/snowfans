@@ -46,7 +46,7 @@ footer{
 	height: 200px;
 	color: #f7f6f5;
 	background-color:  #efefef;
-	background-image: url("images/footer-image.jpg");
+	background-image: url("images/footer-image2.jpg");
 	background-position: bottom center;
 	background-size: cover;
 	box-shadow: inset 0px 2px 2px #dedede;
@@ -54,7 +54,7 @@ footer{
 }
 main{
 	position: relative;
-	background-color: #d4e9fb;
+	background-color: #ffff;
 	padding-top: 60px;
 	min-height: 100vh;
 }
@@ -141,16 +141,140 @@ nav li{
 	position: absolute;
     top: -10px;
     right: -10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.5rem;
+    text-align: center;
+    font-weight: bold;
     color: #efefef;
     background-color: red;
-    font-size: 0.8rem;
-    text-align: center;
-    width: 20px;
-    font-weight: bold;
-    height: 20px;
     border-radius: 50%;
-    line-height: 20px;
 }
+
+.notifications-wrapper {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    max-width: 150px;
+    margin: 0 auto;
+    list-style: none;
+    font-size: 0.8rem;
+    z-index: 1000;
+}
+.notifications-wrapper:hover{
+	max-width: 300px;
+}
+
+.notifications-wrapper > li {
+    float: left;
+    width: 100%; /* グローバルナビ4つの場合 */
+    height: 50px;
+    line-height: 50px;
+    background-color: lightgray;
+}
+
+.notifications-wrapper > li p {
+	text-align: center;
+    display: block;
+    /*color: #fff;*/
+}
+
+.notifications-wrapper > li p:hover {
+	/*background-color: #efefef;*/
+    /*color: #999;*/
+}
+
+ul.notifications-list {
+	display: block;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+}
+
+.notifications-wrapper > li:hover {
+    background-color: lightgray;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.notifications-list li {
+	font-size: 0.6rem;
+	;list-style: none;
+    /*border-top: 1px solid #111;*/
+}
+.notifications-list li:hover{
+	background-color: #efefef;
+}
+.menu__third-level li {
+    border-top: 1px solid #111;
+}
+
+.notifications-box li p:hover {
+    /*background: #efefef;*/
+}
+
+/* 下矢印 */
+.init-bottom:after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 0 0 15px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* floatクリア */
+.notifications-wrapper:before,
+.notifications-wrapper:after {
+    content: " ";
+    display: table;
+}
+
+.notifications-wrapper:after {
+    clear: both;
+}
+
+.notifications-wrapper {
+    /**zoom: 1;*/
+}
+
+
+
+.notifications-wrapper > li.notifications-box {
+    position: relative;
+}
+
+li.notifications-box ul.notifications-list {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background-color: white;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+li.notifications-box:hover ul.notifications-list {
+    top: 50px;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
 .sign-out{
 	margin-left: 50px;
 	padding: 3px 10px;
@@ -172,3 +296,5 @@ nav li{
 .loginuser-icon{
 	width: 48px;
 }
+
+

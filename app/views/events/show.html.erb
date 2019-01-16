@@ -31,27 +31,27 @@
 			<% unless @event.user == current_user %>
 				<div class="text-centering">
 						<% if @event.join?(current_user) %>
-							<%= link_to event_join_path(@event.id), method: :delete do %>
-								<div class="button join box-shadow">参加をやめる</div>
+							<%= link_to event_join_path(@event.id), method: :delete, data: {confirm: "イベント参加をキャンセルします。よろしいですか？"} do %>
+								<div class="button join box-shadow"><p>参加をやめる</p></div>
 							<% end %>
 						<% else %>
 							<%= link_to event_join_path(@event.id), method: :post, data: {confirm: "イベントに参加します。よろしいですか？"} do %>
-								<div class="button join box-shadow">このイベントに参加する</div>
+								<div class="button join box-shadow"><p>参加する</p></div>
 							<% end %>
 						<% end %>
 
 						<% if @event.checked?(current_user) %>
 							<%= link_to event_interest_path(@event.id), method: :delete do %>
-								<p class="button interest box-shadow">Unclip</p>
+								<div class="button interest box-shadow"><p><i class="fas fa-check"></i>Unclip</p></div>
 							<% end %>
 						<% else %>
 							<%= link_to event_interest_path(@event.id), method: :post do %>
-								<p class="button interest box-shadow">Clip</p>
+								<div class="button uninterest box-shadow"><p><i class="fas fa-check"></i>Clip</p></div>
 							<% end %>
 						<% end %>
 				</div>
 
-				<div class="text-centering">投稿ユーザー情報</div>
+				<div class="organizer text-centering">投稿ユーザー情報</div>
 				<div class="organizer-info-box">
 					<div class="organizer-introduction2">
 						<%= link_to "#{@user.nickname}さんの他の予定をチェック", user_path(@user.id), class: "event-index" unless @user == current_user %>

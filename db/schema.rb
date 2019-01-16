@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_092218) do
+ActiveRecord::Schema.define(version: 2019_01_11_022244) do
 
   create_table "areas", force: :cascade do |t|
     t.integer "code"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2018_12_26_092218) do
     t.integer "user_id"
     t.integer "notified_by_id"
     t.integer "event_id"
-    t.string "type"
+    t.string "notification_type"
     t.boolean "check", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -20,7 +20,7 @@
 				<td class="text-centering"><%= interest.event.date.strftime("%Y年 %-m月 %-d日　(%a)") %></td>
 			</tr>
 		</table>
-		<p class="event-title">
+		<p class="event-title ellipsis">
 			<%= link_to user_event_path(interest.event.user_id ,interest.event.id) do %>
 			<%= interest.event.title %>
 			<% end %>

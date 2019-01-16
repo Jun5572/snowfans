@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # get 'events/index'
-  # get 'events/new'
-  # get 'events/edit'
+
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  get 'notification/:id/link_through' => 'notifications#link_through', as: 'link_through'
   get 'events/narrow_down' => 'events#narrow_down', as: 'narrow_down_events'
   get 'events/clip-lists' => 'events#check_lists', as: 'check_list_events'
   get 'users/:id/interests' => 'users#check_lists', as: 'check_list_user'

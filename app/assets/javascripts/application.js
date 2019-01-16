@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require semantic-ui
+// require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require jquery.turbolinks
@@ -22,22 +22,6 @@
 //= require_tree .
 
 
-	// $('#calendar').fullCalendar({
-	// 	// events: '/events.json',
-	// 	selectable: 'true',
-	// 	selectHelper: 'true',
-	// 	dayClick: function(date, jsEvent, view){
-	// 		var day = moment(date).format('YYYY/MM/DD');
-	// 		console.log(day);
-	// 	}
-	// });
-
-
-// fullcalendar関連
-// $(document).ready(function(){
-//   $('#calendar').fullCalendar({
-//   });
-// });
 
 // flashメッセージfadeOut
 $(function(){
