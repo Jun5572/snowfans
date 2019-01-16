@@ -1,68 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>main</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>main</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<!-- <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=Anton|Noto+Sans+JP" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
 
-    <!-- <link rel='stylesheet' href='fullcalendar/fullcalendar.css' /> -->
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous">
-    </script>
-    <script src="semantic/dist/semantic.min.js"></script>
-    <!-- <script src='lib/jquery.min.js'></script> -->
-    <!-- <script src='lib/moment.min.js'></script> -->
-    <!-- <script src='fullcalendar/fullcalendar.js'></script> -->
-  </head>
+		<!-- <link rel='stylesheet' href='fullcalendar/fullcalendar.css' /> -->
+		<!-- <script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous">
+		</script> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script href="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<!-- <script src="semantic/dist/semantic.min.js"></script> -->
+		<!-- <script src='lib/jquery.min.js'></script> -->
+		<!-- <script src='lib/moment.min.js'></script> -->
+		<!-- <script src='fullcalendar/fullcalendar.js'></script> -->
+	</head>
 
-  <body>
-    <header id="header" class="">
-      <% if user_signed_in? %>
-        <nav class="global-nav">
-          <ul>
-            <div class="nav-box">
-              <li class="nav-list button"></i><%= link_to  "全国のゲレンデ情報をCheck!", "https://snow.gnavi.co.jp/", target: "_blank" %></li>
-              <li class="nav-list button"><%= link_to "みんなの予定", root_path %></li>
-              <li class="nav-list button"><%= link_to "予定を投稿", new_event_path %></li>
-            </div>
-            <li class="provider-link">
-              <%= link_to user_path(current_user.id) do %>
-                <div class="loginuser">
-                  <div class="loginuser-name ellipsis"><%= current_user.nickname %></div>
-                  <%= image_tag(current_user.thumbnail_id) %>
-                </div>
-              <% end %>
+	<body>
+		<header id="header" class="">
+			<% if user_signed_in? %>
+				<nav class="global-nav">
+					<ul>
+						<div class="nav-box">
+							<li class="nav-list button"></i><%= link_to  "全国のゲレンデ情報をCheck!", "https://snow.gnavi.co.jp/", target: "_blank" %></li>
+							<li class="nav-list button"><%= link_to "みんなの予定", root_path %></li>
+							<li class="nav-list button"><%= link_to "予定を投稿", new_event_path %></li>
+						</div>
+						<li class="provider-link">
+							<%= link_to user_path(current_user.id) do %>
+								<div class="loginuser">
+									<div class="loginuser-name ellipsis"><%= current_user.nickname %></div>
+									<%= image_tag(current_user.thumbnail_id) %>
+								</div>
+							<% end %>
+						</li>
+						<li class="button">
+							<%= link_to edit_user_path(current_user) do %>
+								<i class="fas fa-cogs"></i>
+							<% end %>
+						</li>
+						<!-- お知らせアイコン -->
+						<li class="notification-bell">
+							<i class="far fa-bell"><span class="notification-count"><%= current_user.notifications.where(check: false).count %></span></i>
+						</li>
+						<!-- お知らせアイコンend -->
+						<li><%= link_to "Sign out", destroy_user_session_path, class: "button sign-out", method: :delete %></li>
+					</ul>
+				</nav>
+			<% end %>
+		</header><!-- /header -->
+
+		<ul class="notifications-wrapper box-shadow">
+  		<li class="notifications-box">
+        <p class="init-bottom">新着お知らせ<%= current_user.notifications.where(check: false).count %>件</p>
+        <ul class="notifications-list">
+        	<% current_user.notifications.where(check: false).first(5).each do |n| %>
+            <li>
+            	<%= link_to link_through_path(n.id) do %>
+	            	<% if n.notification_type == "コメント" %>
+	            		<p><%= n.notified_by.nickname %>さんがコメントしました</p>
+	            	<% elsif n.notification_type == "参加" %>
+	            		<p><%= n.notified_by.nickname %>さんがイベント参加予定です！</p>
+	            	<% end %>
+	            <% end %>
+	            <% if n.notification_type == "#{n.user.area.name}" %>
+		            <%= link_to link_through_path(n.id) do%>
+		            	<p>ホームエリア(<%= n.notification_type %>)で新しくイベントが投稿されました！</p>
+		            <% end %>
+	            <% end %>
             </li>
-            <li class="button">
-              <%= link_to edit_user_path(current_user) do %>
-                <i class="fas fa-cogs"></i>
-              <% end %>
-            </li>
-            <li class="button notification-bell">
-              <i class="far fa-bell"><span class="notification-count">3</span></i>
-            </li>
-            <li><%= link_to "Sign out", destroy_user_session_path, class: "button sign-out", method: :delete %></li>
-          </ul>
-        </nav>
-      <% end %>
-    </header><!-- /header -->
-    <main>
-      <div class="main-wrapper">
-        <div id="flash" class="text-centering"><%= render "layouts/flash_messages" %></div>
-        <%= yield %>
-      </div>
-    </main>
-    <footer id="footer" class="">
-      footer
-    </footer>
-  </body>
+          <% end %>
+          <% if current_user.notifications.where(check: false).count > 5 %>
+          	<p><%= link_to "全て見る", events_path %></p>
+          <% end %>
+        </ul>
+	    </li>
+		</ul>
+
+		<main>
+			<div class="main-wrapper">
+				<div id="flash" class="text-centering"><%= render "layouts/flash_messages" %></div>
+				<%= yield %>
+			</div>
+		</main>
+		<footer id="footer" class="">
+			footer
+		</footer>
+	</body>
 </html>

@@ -20,7 +20,7 @@
 				<td class="text-centering"><%= join.event.date.strftime("%Y年 %-m月 %-d日　(%a)") %></td>
 			</tr>
 		</table>
-		<p class="event-title">
+		<p class="event-title ellipsis">
 			<%= link_to user_event_path(join.event.user_id ,join.event.id) do %>
 			<%= join.event.title %>
 			<% end %>

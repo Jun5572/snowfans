@@ -11,12 +11,12 @@ class UsersController < ApplicationController
 # ユーザー詳細
 	def show
 		@user = User.find(params[:id])
-		@events = @user.events.order(created_at: :desc)
+		@events = @user.events.where("events.date >= ?", Date.today).order(created_at: :desc)
 	end
 # 登録情報編集
 	def edit
 		@user = User.find(params[:id])
-		@events = @user.events.order(created_at: :desc)
+		@events = @user.events.where("events.date >= ?", Date.today).order(created_at: :desc)
 	end
 
 	def update
@@ -35,13 +35,13 @@ class UsersController < ApplicationController
 
 	def check_lists
 		@user = User.find(params[:id])
-    	@interests = current_user.interests
+    	@interests = current_user.interests.order(created_at: :desc)
     	render :show
   	end
 
   	def join_lists
 		@user = User.find(params[:id])
-  		@joins = current_user.joins
+  		@joins = current_user.joins.order(created_at: :desc)
   		render :show
   	end
 

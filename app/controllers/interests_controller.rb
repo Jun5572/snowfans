@@ -7,7 +7,7 @@ class InterestsController < ApplicationController
 		interest.user_id = current_user.id
 		interest.event_id = event.id
 		if interest.save
-			flash[:notice] = "ブックマークに追加しました"
+			flash[:notice] = "クリップボードに追加しました"
 			redirect_back(fallback_location: request.referer)
 		else
 			puts "失敗"
@@ -19,7 +19,7 @@ class InterestsController < ApplicationController
 		event = Event.find(params[:event_id])
 		interest = Interest.find_by(user_id: current_user.id, event_id: event.id)
 		if interest.destroy
-			flash[:notice] = "ブックマークから削除しました"
+			flash[:notice] = "クリップボードから削除しました"
 			redirect_back(fallback_location: request.referer)
 		else
 			puts "失敗"

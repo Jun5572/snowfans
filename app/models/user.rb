@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :interests, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :comment, dependent: :destroy
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   has_many :authorizations
 
   belongs_to :area

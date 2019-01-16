@@ -69,6 +69,9 @@ end
 
 
 # -------------- original ---------------
+# bootstrap
+gem 'bootstrap-sass'
+
 gem 'jquery-turbolinks'
 gem 'jquery-rails'
 

@@ -6,6 +6,7 @@ class Event < ApplicationRecord
 	has_many :join_users, through: :joins, source: :user
 	has_many :check_users, through: :interests, source: :user
 	has_many :comments, dependent: :destroy
+	has_many :notifications, dependent: :destroy
 
 	belongs_to :user
 	belongs_to :area

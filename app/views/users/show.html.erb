@@ -2,14 +2,14 @@
 		<div class="grid-item-main">
 			<% if @user == current_user %>
 				<div class="sub-nav">
-					<%= link_to "ブックマーク", check_list_user_path(current_user) %>
+					<%= link_to "クリップボード", check_list_user_path(current_user) %>
 					<%= link_to "参加予定", join_list_user_path(current_user) %>
 					<%= link_to "自分の予定", user_path(current_user) %>
 				</div>
 			<% end %>
 			<div class="everyone">
 				<% if @path.is('users#check_lists') %>
-					<p>ブックマーク</p>
+					<p><i class="fas fa-check"></i>クリップボード</p>
 				<% elsif @path.is('users#join_lists') %>
 					<p>参加予定イベント</p>
 				<% else %>
