@@ -19,5 +19,19 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+
+	def correct_user?
+		user = User.where(id: params[:id]).exists? && User.find(params[:id])
+		if user
+			unless user == current_user
+				flash[:error] = "他のユーザー情報は変更できません！"
+				redirect_back(fallback_location: root_path)
+			end
+		else
+			flash[:error] = "ユーザーが存在しません！"
+			redirect_back(fallback_location: root_path)
+		end
+	end
+
 	protected
 end

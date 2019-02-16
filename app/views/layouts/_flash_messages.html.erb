@@ -1,10 +1,14 @@
 
 	<% if flash.now[:notice] %>
-		<p class="notice"><%= h(flash.now[:notice]) %></p>
+		<p class="flash__message notice"><%= h(flash.now[:notice]) %></p>
 	<% elsif flash[:error] %>
-		<p class="error"><%= h(flash[:error]) %></p>
+		<p class="flash__message error"><%= h(flash[:error]) %></p>
 	<% elsif flash[:first_welcome] %>
-		<p class="first-welcome"><%= h(flash[:first_welcome]) %></p>
+		<p class="flash__message first-welcome"><%= h(flash[:first_welcome]) %></p>
 	<% elsif flash[:welcome] %>
-		<p class="welcome"><%= h(flash[:welcome]) %></p>
+		<p class="flash__message welcome"><%= h(flash[:welcome]) %></p>
+	<% elsif flash[:twitter] %>
+		<p class="flash__message twitter"><%= flash[:twitter] %></p>
+	<% elsif flash[:facebook] %>
+		<p class="flash__message facebook"><%= flash[:facebook] %></p>
 	<% end %>

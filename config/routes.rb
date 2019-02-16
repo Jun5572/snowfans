@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'users/:id/joins' => 'users#join_lists', as: 'join_list_user'
 resources :users do
   resources :events, only: [:show, :edit]
+  resources :notifications, only: [:index]
 end
 
 resources :events, except: [:show, :edit] do
@@ -16,7 +17,6 @@ resources :events, except: [:show, :edit] do
   resource :interest, only: [:create, :destroy]
 end
 resources :comments, except: [:create]
-
 
 # ルートパス指定。ログイン時
   root 'events#index'

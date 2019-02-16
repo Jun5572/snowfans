@@ -147,6 +147,20 @@ input[type="submit"]{
 	line-height: 20px;
 	margin-bottom: 20px;
 }
+
+.link-to-edit{
+	display: block;
+	margin: 0 auto;
+	padding: 5px 10px;
+	text-align: center;
+	color: #efefef;
+	background-color: #6aaa97;
+}
+.link-to-edit:hover{
+	color: #efefef;
+	text-decoration: none;
+}
+
 select[name="user[area_id]"]{
 	display: inline-block;
 	margin: 10px 0 10px;
@@ -217,7 +231,7 @@ select[name="user[area_id]"]:hover{
 	display: flex;
 	justify-content: flex-end;
 	position: fixed;
-	top: 60px;
+	top: 80px;
 	left: 0;
 	width: 70%;
 	padding-right: 20px;
@@ -230,14 +244,17 @@ select[name="user[area_id]"]:hover{
 }
 .sub-nav a{
 	padding: 10px 10px 8px;
-	color: #504946
-	;
+	color: #504946;
 	font-size: 0.8rem;
 	background-color: transparent;
 	border-bottom: solid 2px transparent;
 }
 .sub-nav a:hover{
 	/*background-color: gray;*/
+	border-bottom: 2px solid orangered;
+}
+
+.sub-nav .selected{
 	border-bottom: 2px solid orangered;
 }
 

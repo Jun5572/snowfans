@@ -18,11 +18,13 @@
 	font-size: 0.7rem;
 }
 .everyone{
+	width: 70%;
     text-align: center;
-    padding: 20px;
+    margin: 20px auto;
+    padding-bottom: 10px;
     font-size: 25px;
+    border-bottom: double 4px gray;
 }
-
 /*event親要素（一番外）*/
 .events-wrapper{
 	position: relative;
@@ -30,6 +32,16 @@
 	height: 100%;
 	margin: 0 auto;
 	padding: 30px 0 60px 0;
+}
+
+.non_event{
+	position: absolute;
+	top: 200%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 30px;
+	color: gray;
+	text-align: center;
 }
 
 .user-image{
@@ -62,7 +74,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url("/images/footer-image2.jpg");
+	/*background-image: url("/images/footer-image2.jpg");*/
 	background-attachment: fixed;
 	opacity: 0.5;
 }
@@ -221,6 +233,7 @@
 	z-index: 1000;
 }
 .comment-box{
+	font-size: 0.8rem;
 	resize: none;
 	margin-top: 20px;
 	padding: 10px;
@@ -359,7 +372,7 @@
 }*/
 .new-event-description{
 	min-width: 100%;
-	min-height: 200px;	
+	min-height: 200px;
 }
 textarea{
 	/*min-width: 100%;
@@ -379,11 +392,13 @@ textarea{
 }
 .date-custom{
 	position: relative;
+	z-index: 0px;
 }
 
 input[type="date"]{
-	position: relative;
+	/*position: relative;*/
 	padding: 0 10px;
+	margin-left: 50px;
 	width: 150px;
 	height: 36px;
 	border: 0;
@@ -399,13 +414,14 @@ input[type="date"]::-webkit-clear-button{
 }
 input[type="date"]::-webkit-calendar-picker-indicator{
 	position: absolute;
-	left: -125px;
+	left: 0px;
 	top: 0px;
 	padding: 0;
 	width: 120px;
 	height: 38px;
 	border-radius: 5px;
-	background: transparent;
+	background-color: transparent;
 	color: transparent;
 	cursor: pointer;
+	/*z-index: 1000;*/
 }

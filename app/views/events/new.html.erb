@@ -5,7 +5,6 @@
 				<%= f.text_field :title, placeholder: "例：丸沼高原に行きまーす！" %>
 			</div>
 			<div class="field new">
-				<!-- <div class="form-label">詳細</div> -->
 				<%= f.label :description, "詳細", class: "form-label" %>
 				<%= f.text_area :description, class: "new-event-description", placeholder: "例：#{@placeholder_text}" %>
 			</div>
@@ -13,7 +12,7 @@
 				<%= f.label :date, "日程", class: "form-label" %>
 				<label class="date-custom">
 					<span class="button select-date-style box-shadow"><p>日程を選択</p></span>
-					<%= f.date_field :date, value: Date.today, min: Date.today, max: "9999/12/31", prompt: "選択してください" %>
+					<%= f.date_field :date, value: Date.today, min: Date.today, max: "9999/12/31" %>
 				</label>
 			</div>
 			<div class="field">
