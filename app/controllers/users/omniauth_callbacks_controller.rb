@@ -43,7 +43,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_oauth(request.env['omniauth.auth'])
 
     if @user.persisted?
-        flash[:welcome] = "こんにちは！#{@user.nickname}さん！#{provider}アカウントでログインしました！"
+        flash[:"#{provider}"] = "こんにちは！#{@user.nickname}さん！#{provider}アカウントでログインしました！"
         puts request.env['omniauth.auth']
       # flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
         sign_in_and_redirect @user, event: :authentication

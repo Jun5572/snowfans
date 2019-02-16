@@ -25,13 +25,14 @@ class User < ApplicationRecord
         	:omniauthable
 
 
+
   # UserモデルにSNS認証が要求されたときにユーザーを生成する機能
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user ||= User.where(uid: auth.uid, provider: auth.provider).first
 
     unless user
       if auth.provider == "twitter"
-        user = User.create( uid: auth.uid,
+        user ||= User.create( uid: auth.uid,
                             provider: auth.provider,
                             nickname: auth.info.name,
                             thumbnail_id: auth.info.image,
@@ -44,7 +45,7 @@ class User < ApplicationRecord
       else
         # provider = facebook
         binding.pry
-        user = User.create( uid: auth.uid,
+        user ||= User.create( uid: auth.uid,
                             provider: auth.provider,
                             nickname: auth.info.name,
                             thumbnail_id: auth.info.image,

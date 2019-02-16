@@ -25,7 +25,7 @@
 </div>
 <div class="events-wrapper">
 		<% if @events.count == 0 %>
-			<p>現在投稿はありません</p>
+			<p class="non_event"><i class="fas fa-snowman"></i>現在投稿がありません<i class="fas fa-snowman"></i></p>
 		<% else %>
 			<%= render @events %>
 		<% end %>

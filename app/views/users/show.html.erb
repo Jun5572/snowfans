@@ -1,7 +1,7 @@
 	<div class="grid-container">
 		<div class="grid-item-main">
 			<% if @user == current_user %>
-				<div class="sub-nav">
+				<div id= "tab" class="sub-nav">
 					<%= link_to "クリップボード", check_list_user_path(current_user) %>
 					<%= link_to "参加予定", join_list_user_path(current_user) %>
 					<%= link_to "自分の予定", user_path(current_user) %>
@@ -9,13 +9,14 @@
 			<% end %>
 			<div class="everyone">
 				<% if @path.is('users#check_lists') %>
-					<p><i class="fas fa-check"></i>クリップボード</p>
+					<p><i class="fas fa-check"></i>クリップボード<i class="fas fa-check"></i></p>
 				<% elsif @path.is('users#join_lists') %>
-					<p>参加予定イベント</p>
+					<p><i class="fas fa-snowboarding"></i>参加予定イベント<i class="fas fa-skiing"></i></p>
 				<% else %>
 					<p><%= @user.nickname %>さんの予定</p>
 				<% end %>
 			</div>
+			<%= content_tag :p, "イベントが存在しません", class: "no_contents" if @events.blank? %>
 			<div class="events-wrapper">
 				<% if @path.is('users#check_lists') %>
 					<%= render partial: "interests/interest", collection: @interests %>
@@ -45,6 +46,7 @@
 						</td>
 					</tr>
 				</table>
+				<%= link_to "ホームエリアを設定する", edit_user_path(current_user.id), class: "box-shadow link-to-edit" if current_user.area_id == 9%>
 			</div>
 		</div>
 	</div>

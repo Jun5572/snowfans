@@ -11,9 +11,11 @@ class Event < ApplicationRecord
 	belongs_to :user
 	belongs_to :area
 
+
 	validates :title, presence: true
 	validates :description, presence: true
 	validates :area_id, presence: true
+	# validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
 
 	def join?(user)
